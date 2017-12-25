@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/Nikolay/Documents/NetBeansProjects/ZApp/LeProjectDeMortale/LeProjectDeMortale-web/src/main/resources/jaxb/GetDataSchemaBinding/GetDataConfig.xsd" uri="src/main/resources/jaxb/AnotherOne/GetDataConfig.xsd"/>
+    <system systemId="file:/C:/Users/Nikolay/Documents/NetBeansProjects/ZApp/LeProjectDeMortale/LeProjectDeMortale-web/src/main/resources/GetDataConfig.xsd" uri="src/main/resources/jaxb/wwww/GetDataConfig.xsd"/>
+</catalog>

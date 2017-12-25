@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/Nikolay/Documents/NetBeansProjects/ZApp/LeProjectDeMortale/LeProjectDeMortale-web/src/main/webapp/WEB-INF/wsdl/GetDataService.wsdl" uri="wsdl/GetDataService.wsdl"/>
+    <system systemId="file:/C:/Users/Nikolay/Documents/NetBeansProjects/ZApp/LeProjectDeMortale/LeProjectDeMortale-web/src/main/webapp/WEB-INF/wsdl/GetDataService.xsd_1.xsd" uri="wsdl/GetDataService.xsd_1.xsd"/>
+</catalog>
