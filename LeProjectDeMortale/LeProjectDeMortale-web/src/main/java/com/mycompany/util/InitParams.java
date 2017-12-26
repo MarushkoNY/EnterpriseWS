@@ -27,9 +27,9 @@ public class InitParams {
         System.out.println(cfg.getConnectionTimeout());
         BindingProvider bp = (BindingProvider) (BindingProvider) new GetDataService().getGetDataPort();
         Map<String,Object> ctx = bp.getRequestContext();
-        ctx.put(com.sun.xml.internal.ws.developer.JAXWSProperties.CONNECT_TIMEOUT,  cfg.getConnectionTimeout());
-        ctx.put(com.sun.xml.internal.ws.developer.JAXWSProperties.REQUEST_TIMEOUT, cfg.getRecieveTimeout());
-        ctx.put(com.sun.xml.internal.ws.developer.JAXWSProperties.WSENDPOINT, cfg.getEndpointLocation());
+        ctx.put(com.sun.xml.ws.developer.JAXWSProperties.CONNECT_TIMEOUT,  cfg.getConnectionTimeout());
+        ctx.put(com.sun.xml.ws.developer.JAXWSProperties.REQUEST_TIMEOUT, cfg.getRecieveTimeout());
+        ctx.put(com.sun.xml.ws.developer.JAXWSProperties.WSENDPOINT, cfg.getEndpointLocation());
         
         
         

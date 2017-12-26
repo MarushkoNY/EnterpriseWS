@@ -4,5 +4,11 @@
   <module>
     <ejb>LeProjectDeMortale-ejb-1.0.jar</ejb>
   </module>
+  <module>
+    <web>
+      <web-uri>LeProjectDeMortale-web-1.0.war</web-uri>
+      <context-root>/LeProjectDeMortale-web</context-root>
+    </web>
+  </module>
   <library-directory>lib</library-directory>
 </application>
