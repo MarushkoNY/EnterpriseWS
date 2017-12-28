@@ -5,6 +5,8 @@
                 <xs:element name="connectionTimeout" type="xs:int" minOccurs="0"/>
                 <xs:element name="recieveTimeout" type="xs:int" minOccurs="0"/>
                 <xs:element name="endpointLocation" type="xs:string" minOccurs="0"/>
+                <xs:element name="initialDelay" type="xs:long" minOccurs="0"/>
+                <xs:element name="period" type="xs:long" minOccurs="0"/>
              </xs:sequence>
              
              

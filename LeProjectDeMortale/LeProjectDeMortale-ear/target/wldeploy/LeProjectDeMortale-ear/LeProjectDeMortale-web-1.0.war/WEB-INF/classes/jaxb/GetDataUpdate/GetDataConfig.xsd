@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.10-b140319.1121 svn-revision#7b34660d6bc70e587e8ec81a17e4d76af68816a6. --><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="getDataConfig">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="connectionTimeout" type="xs:int" minOccurs="0"/>
+                <xs:element name="recieveTimeout" type="xs:int" minOccurs="0"/>
+                <xs:element name="endpointLocation" type="xs:string" minOccurs="0"/>
+                <xs:element name="initialDelay" type="xs:long" minOccurs="0"/>
+                <xs:element name="period" type="xs:long" minOccurs="0"/>
+             </xs:sequence>
+             
+             
+        </xs:complexType>
+        </xs:element>
+    
+    
+</xs:schema>

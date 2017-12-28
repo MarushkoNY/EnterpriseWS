@@ -35,7 +35,11 @@
             <artifactId>jaxws-rt</artifactId>
             <version>2.1.4</version>
         </dependency>
-
+        <dependency>
+            <groupId>ru.iflex.commons</groupId>
+            <artifactId>iflex-logging</artifactId>
+            <version>2.1.4</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -207,6 +211,18 @@
                             <episodeFile>${project.build.directory}/generated-sources/xjc/META-INF/jaxb-wwww.episode</episodeFile>
                         </configuration>
                         <id>jaxb-generate-wwww</id>
+                    </execution>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <schemaIncludes>
+                                <include>jaxb/GetDataUpdate/*.xsd</include>
+                            </schemaIncludes>
+                            <episodeFile>${project.build.directory}/generated-sources/xjc/META-INF/jaxb-GetDataUpdate.episode</episodeFile>
+                        </configuration>
+                        <id>jaxb-generate-GetDataUpdate</id>
                     </execution>
                 </executions>
                 <configuration>

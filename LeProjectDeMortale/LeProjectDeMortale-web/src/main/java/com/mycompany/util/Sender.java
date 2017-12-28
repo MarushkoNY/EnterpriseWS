@@ -16,6 +16,10 @@ import javax.jms.TextMessage;
 import javax.naming.InitialContext;
 import service.Data;
 import com.mycompany.util.Marsh;
+import com.mycompany.webService.RestHandler;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+import ru.iflex.commons.logging.Log4jLogger;
 
 /**
  *
@@ -24,6 +28,8 @@ import com.mycompany.util.Marsh;
 
 public class Sender {
 //    
+    
+      Logger logger = Log4jLogger.getLogger(Sender.class);
 //    @Resource(name = "ConnectionFactory1")
 //    private ConnectionFactory factory;
 //    
@@ -40,12 +46,18 @@ public class Sender {
             Queue queue = (Queue) new InitialContext().lookup("Queue1");
             connection = factory.createConnection();
             session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+            
             MessageProducer producer = session.createProducer(queue);
             TextMessage message = session.createTextMessage();
             message.setText(sMessage);
             producer.send(message);
+            
+            
+            logger.info("The object \"data\" was sent");
+            
            }catch (Exception ex) {
                ex.printStackTrace();
+               logger.error("Exception occuring while JMS queue sending {}", ex);
            }
        }
   

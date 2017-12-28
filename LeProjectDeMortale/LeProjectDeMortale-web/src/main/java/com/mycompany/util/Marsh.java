@@ -11,6 +11,9 @@ import java.io.FileReader;
 import java.io.StringWriter;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.Logger;
+import ru.iflex.commons.logging.Log4jLogger;
 
 /**
  *
@@ -20,6 +23,7 @@ import javax.xml.bind.Marshaller;
 public class Marsh {
     
     static private JAXBContext ctx;
+    private static Logger logger = Log4jLogger.getLogger(Marsh.class);
     
     public static String marshal(Data data){
         String result = "";
@@ -40,6 +44,7 @@ public class Marsh {
             result = sw.toString();
         } catch (Exception ex) {
             ex.printStackTrace();
+            logger.error("Exception occured while unmarshalling!");
         }
             return result;
         }

@@ -10,7 +10,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
 import javax.xml.ws.BindingProvider;
+import org.apache.logging.log4j.Level;
 import ru.iflex.commons.configuration.ConfigReader;
+import ru.iflex.commons.logging.Log4jLogger;
 import service.GetDataService;
 
 
@@ -30,6 +32,8 @@ public class InitParams {
         ctx.put(com.sun.xml.ws.developer.JAXWSProperties.CONNECT_TIMEOUT,  cfg.getConnectionTimeout());
         ctx.put(com.sun.xml.ws.developer.JAXWSProperties.REQUEST_TIMEOUT, cfg.getRecieveTimeout());
         ctx.put(com.sun.xml.ws.developer.JAXWSProperties.WSENDPOINT, cfg.getEndpointLocation());
+        
+        Log4jLogger.getLogger(InitParams.class).info("The WS params was initialized {}", cfg.getEndpointLocation());
         
         
         
