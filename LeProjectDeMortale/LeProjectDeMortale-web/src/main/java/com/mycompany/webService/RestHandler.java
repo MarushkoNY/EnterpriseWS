@@ -70,10 +70,10 @@ public class RestHandler {
             imode = 1;
         }
         String resp = "";
-        //validation of input parameters
         if((imode = Validator.validate(mode))==0){
             return Response.ok().entity("Enter the proper values!").build();
         }
+        Log4jLogger.pushThread();
         if (req == null){
             System.out.println();
             logger.info("Request from timer");
@@ -83,9 +83,6 @@ public class RestHandler {
         data.setTime(new Timestamp(System.currentTimeMillis()));
         resolveService(imode).storeData(data);
         resp = "Your IP and request time was added to server!";
-       
-        //Logging below
-        Log4jLogger.pushThread();
         logger.info("Incoming STORE request from {}", req.getRemoteHost());
         }
         return Response.ok().entity(resp).build();
