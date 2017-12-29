@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="file:/C:/Users/Nikolay/Documents/NetBeansProjects/ZApp/EEClient/EEClient-web/src/main/webapp/WEB-INF/wsdl/DataService.wsdl" uri="wsdl/DataService.wsdl"/>
+    <system systemId="http://10.55.55.242:7001/EE1-web/DataService?xsd=1" uri="wsdl/10.55.55.242_7001/EE1-web/DataService.xsd_1.xsd"/>
+</catalog>

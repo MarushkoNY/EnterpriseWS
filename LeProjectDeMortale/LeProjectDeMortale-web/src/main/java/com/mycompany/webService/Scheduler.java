@@ -5,9 +5,10 @@
  */
 package com.mycompany.webService;
 
-import generated.GetDataConfig;
+import com.mycompany.gen.GetDataConfig;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -30,63 +31,61 @@ import ru.iflex.commons.configuration.ConfigReader;
 @Singleton
 @Startup
 public class Scheduler {
-    
+
     @EJB
     private RestHandler handler;
     
-    static ScheduledExecutorService service = Executors.newSingleThreadScheduledExecutor();
     
-//    @Resource
-//    private SessionContext ctx;
-    
-    
+    private static ScheduledExecutorService service;
+
+    public static ScheduledFuture<?> currentTimer;
+
     @PostConstruct
-    private void init(){
+    private void init() {
         initTimer();
     }
-    
-    @Schedule(second = "*/10", minute = "*", hour = "*" )
-    private void initGet(){
+
+//    public GetDataConfig getDC() {
+//        return ConfigReader.getInstance(GetDataConfig.class).getConfig();
+//    }
+
+    @Schedule(second = "*/10", minute = "*", hour = "*")
+    private void initGet() {
         System.out.println("Get method invocation from Scheduler");
-        try{
+        try {
             handler.getData("1", null);
-        }catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
-//    public void comparator(){
-//        ScheduledExecutorService service1 = Executors.newSingleThreadScheduledExecutor();
-//                
-//        
+
+//    public void refresher(){
+//        service.scheduleAtFixedRate(new Refreshment(), 40, 20, TimeUnit.SECONDS);
+//        System.out.println("Refresher was initiated!");
+//      
 //    }
-    
-    public void initTimer(){
-        GetDataConfig cfg = RunRun.cfg;
-        
-        final RestHandler handler = new RestHandler();
-//        service = null;
-//        service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(new RunRun(), cfg.getInitialDelay() , cfg.getPeriod(), TimeUnit.SECONDS);
+    public void syncPeriod() {
+        GetDataConfig cfg = ConfigReader.getInstance(GetDataConfig.class).getConfig();
+        currentTimer.cancel(true);
+        currentTimer = service.scheduleAtFixedRate(new RunRun(), cfg.getInitialDelay(), cfg.getPeriod(), TimeUnit.SECONDS);
     }
-    
-    public void initNewTimer(){
-        service.shutdownNow();
-        service.scheduleAtFixedRate(new RunRun(), RunRun.cfg.getInitialDelay(), RunRun.cfg.getPeriod(), TimeUnit.SECONDS);
+
+    public void initTimer() {
+        GetDataConfig cfg = ConfigReader.getInstance(GetDataConfig.class).getConfig();
+        System.out.println("Main timer was initiated!");
+        service = Executors.newSingleThreadScheduledExecutor();
+        currentTimer = service.scheduleAtFixedRate(new RunRun(), cfg.getInitialDelay(), cfg.getPeriod(), TimeUnit.SECONDS);
     }
-    
-    
-//    public void initPost(){
-//        
-//        ScheduleExpression exp = new ScheduleExpression().second("*/10").minute("*").hour("*");
-//        ctx.getTimerService().createCalendarTimer(exp);
+//    public void shutdown(){
+//        service.shutdown();
 //    }
-//    @Timeout
-//    private void initPost(Timer timer){
-//        System.out.println("initPOST method invocation from Scheduler");
-//        handler.storeData(null, "1");
+//     
+//   public void initNewTimer(){
+////        service.shutdown();
+////        service = null;
+////        service = Executors.newSingleThreadScheduledExecutor();
+//        service.scheduleAtFixedRate(new RunRun(), RunRun.cfg.getInitialDelay(), RunRun.cfg.getPeriod(), TimeUnit.SECONDS);
+//        System.out.println("The new timer was initiated");
 //    }
-//    
-    
-    
+
 }

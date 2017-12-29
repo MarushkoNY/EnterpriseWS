@@ -5,7 +5,7 @@
  */
 package com.mycompany.util;
 
-import com.mycompany.generated.GetDataConfig;
+import com.mycompany.gen.GetDataConfig;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Map;
