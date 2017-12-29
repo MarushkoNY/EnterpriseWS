@@ -24,7 +24,6 @@ public class RunRun implements Runnable{
     
     
     private static long beginTime = System.currentTimeMillis();
-    private static boolean isActive = false;
     private static GetDataConfig cfg = ConfigReader.getInstance(GetDataConfig.class).getConfig(); 
     
     @Override
@@ -49,7 +48,7 @@ public class RunRun implements Runnable{
 //                isActive = true;
         
         System.out.println("************************");
-        if (isActive){
+        
         long period = System.currentTimeMillis() - beginTime;
         System.out.println("Entering the \"run\" method with " + period/1000 + " seconds delay!");
         beginTime = System.currentTimeMillis();
@@ -60,10 +59,8 @@ public class RunRun implements Runnable{
             new Scheduler().syncPeriod();
             cfg = newCfg;
         }
-        System.out.println("Exiting the \"run\" method!");
-        } else {System.out.println("Initial startup!");}
+        
         System.out.println("************************");
-        isActive = true;
     }
     
 }
